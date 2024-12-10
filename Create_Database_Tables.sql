@@ -72,7 +72,7 @@ create table oppointments (
 
 
 create table admissions (
-	`admission_id` int(11) primary key AUTO_INCREMENT,
+	admission_id int(11) primary key AUTO_INCREMENT,
     patient_id int(11),
     room_id int(11),
     admission_date date,
