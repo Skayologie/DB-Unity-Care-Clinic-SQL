@@ -72,7 +72,7 @@ create table oppointments (
 
 
 create table admissions (
-	admission_id int(11) primary key AUTO_INCREMENT,
+	`admission_id` int(11) primary key AUTO_INCREMENT,
     patient_id int(11),
     room_id int(11),
     admission_date date,
@@ -92,13 +92,66 @@ create table prescriptions (
 
 
 -- Create Foreign Key For Every Id Column For Relation beetween Tables
-alter table prescriptions add constraint FK_patient_id_presc FOREIGN KEY(patient_id) REFERENCES patients(patient_id);
-alter table prescriptions add constraint FK_doctor_id_presc FOREIGN KEY(doctor_id) REFERENCES doctors(doctor_id);
-alter table prescriptions add constraint FK_medication_id_presc FOREIGN KEY(medication_id) REFERENCES medications(medication_id);
-alter table admissions add constraint FK_patient_id_Admission FOREIGN KEY (patient_id) REFERENCES patients(patient_id);
-alter table admissions add constraint FK_room_id_Admission FOREIGN KEY (room_id) REFERENCES rooms(room_id);
-alter table oppointments add constraint FK_doctor_id_oppointments Foreign Key (doctor_id) REFERENCES doctors(doctor_id);
-alter table oppointments add constraint FK_patient_id_oppointments Foreign Key (patient_id) REFERENCES patients(patient_id);
-Alter table staff add constraint FK_department_id_staff FOREIGN key (department_id) references departments(department_id);
-alter table doctors add constraint FK_department_id_Doctors FOREIGN key (department_id) REFERENCES departments(department_id);
+alter table prescriptions 
+add constraint FK_patient_id_presc 
+FOREIGN KEY(patient_id) 
+REFERENCES patients(patient_id)
+ON UPDATE CASCADE 
+ON DELETE CASCADE ;
+
+alter table prescriptions
+add constraint FK_doctor_id_presc 
+FOREIGN KEY(doctor_id) 
+REFERENCES doctors(doctor_id)
+ON UPDATE CASCADE 
+ON DELETE CASCADE ;
+
+alter table prescriptions 
+add constraint FK_medication_id_presc 
+FOREIGN KEY(medication_id) 
+REFERENCES medications(medication_id)
+ON UPDATE CASCADE 
+ON DELETE CASCADE ;
+
+alter table admissions 
+add constraint FK_patient_id_Admission 
+FOREIGN KEY (patient_id) 
+REFERENCES patients(patient_id)
+ON UPDATE CASCADE 
+ON DELETE CASCADE ;
+
+alter table admissions 
+add constraint FK_room_id_Admission 
+FOREIGN KEY (room_id) 
+REFERENCES rooms(room_id)
+ON UPDATE CASCADE 
+ON DELETE CASCADE ;
+
+alter table oppointments 
+add constraint FK_doctor_id_oppointments 
+Foreign Key (doctor_id) 
+REFERENCES doctors(doctor_id)
+ON UPDATE CASCADE 
+ON DELETE CASCADE ;
+
+alter table oppointments 
+add constraint FK_patient_id_oppointments 
+Foreign Key (patient_id) 
+REFERENCES patients(patient_id)
+ON UPDATE CASCADE 
+ON DELETE CASCADE ;
+
+Alter table staff 
+add constraint FK_department_id_staff 
+FOREIGN key (department_id) 
+references departments(department_id)
+ON UPDATE CASCADE 
+ON DELETE CASCADE ;
+
+alter table doctors 
+add constraint FK_department_id_Doctors
+FOREIGN key (department_id) 
+REFERENCES departments(department_id)
+ON UPDATE CASCADE 
+ON DELETE CASCADE ;
 
